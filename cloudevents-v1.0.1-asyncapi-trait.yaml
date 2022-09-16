@@ -16,7 +16,7 @@ headers:
     ce_id:
       type: string
       minLength: 1
-      description: Identifiziert den Ereignis.
+      description: Identifiziert das Ereignis.
     ce_source:
       type: string
       format: uri-reference
@@ -39,7 +39,3 @@ headers:
       type: string
       format: date-time
       description: Zeitstempel des Ereignisses. Muss RFC 3339 einhalten.
-    content-type:
-      type: string
-      enum:
-        - application/json
