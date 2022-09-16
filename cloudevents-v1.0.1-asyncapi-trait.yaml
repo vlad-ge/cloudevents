@@ -1,0 +1,45 @@
+name: cloudevents
+summary: Kopfzeile für Nachrichten zu CloudEvents Struktur für binary mode (see https://github.com/cloudevents/spec/blob/v1.0.1/kafka-protocol-binding.md)
+headers:
+  type: object
+  required:
+    - ce_specversion
+    - ce_id
+    - ce_source
+    - ce_type
+  properties:
+    ce_specversion:
+      type: string
+      description: Die Version der CloudEvents Spezifikation welche die Ereignis verwendet.
+      enum:
+        - 1.0
+    ce_id:
+      type: string
+      minLength: 1
+      description: Identifiziert den Ereignis.
+    ce_source:
+      type: string
+      format: uri-reference
+      minLength: 1
+      description: Identifiziert den Kontext in welchem ein Ereignis passiert ist.
+    ce_type:
+      type: string
+      minLength: 1
+      description: Beschreibt die Art des Ereignisses im Zusammenhang mit dem ursprünglichen Vorkommen.
+    ce_datacontenttype:
+      type: string
+      description: Inhaltstyp der Datensatz. Muss dem RFC 2046-Format entsprechen.
+    ce_dataschema:
+      type: string
+      description: Identifiziert das Schema, dem die Daten entsprechen.
+    ce_subject:
+      type: string
+      description: Beschreibt das Thema des Ereignisses im Kontext des Ereignisproduzenten (identifiziert durch Quelle).
+    ce_time:
+      type: string
+      format: date-time
+      description: Zeitstempel des Ereignisses. Muss RFC 3339 einhalten.
+    content-type:
+      type: string
+      enum:
+        - application/json
